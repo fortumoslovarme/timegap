@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>TimeGap</PackageId>
+    <Description>Library for everything related to time, timezones and time concepts not supporting by existing native functionality or external libraries.</Description>
+    <noWarn>1591</noWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NodaTime" Version="2.4.2" />
+  </ItemGroup>
+
+</Project>
