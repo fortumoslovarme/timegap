@@ -96,14 +96,13 @@ namespace TimeGap.Tests
         public void AddYears_WhenAddingYears_ReturnNewInstance()
         {
             // Arrange
-
             var date = new DuodecimDate(2018, 6);
 
             // Act
             var newDate = date.AddYears(1);
 
             // Assert
-            Assert.False(ReferenceEquals(date, newDate));
+            Assert.False(Equals(date, newDate));
         }
 
         [Fact]
@@ -143,14 +142,13 @@ namespace TimeGap.Tests
         public void SubtractYears_WhenSubtractingYears_ReturnNewInstance()
         {
             // Arrange
-
             var date = new DuodecimDate(2018, 6);
 
             // Act
             var newDate = date.SubtractYears(1);
 
             // Assert
-            Assert.False(ReferenceEquals(date, newDate));
+            Assert.False(Equals(date, newDate));
         }
 
         [Fact]
@@ -259,7 +257,7 @@ namespace TimeGap.Tests
             var newDate = date.AddMonths(1);
 
             // Assert
-            Assert.False(ReferenceEquals(date, newDate));
+            Assert.False(Equals(date, newDate));
         }
 
         [Fact]
@@ -335,7 +333,7 @@ namespace TimeGap.Tests
             var newDate = date.SubtractMonths(1);
 
             // Assert
-            Assert.False(ReferenceEquals(date, newDate));
+            Assert.False(Equals(date, newDate));
         }
 
         [Fact]
@@ -928,6 +926,7 @@ namespace TimeGap.Tests
             var randomObject = new SomeRandomType();
 
             // Act
+            // ReSharper disable once SuspiciousTypeConversion.Global
             var areEqual = date1.Equals(randomObject);
 
             // Assert
@@ -942,6 +941,7 @@ namespace TimeGap.Tests
             object nullObject = null;
 
             // Act
+            // ReSharper disable once ExpressionIsAlwaysNull
             var areEqual = date1.Equals(nullObject);
 
             // Assert
@@ -1108,14 +1108,13 @@ namespace TimeGap.Tests
         }
 
         [Theory]
-        [InlineData("11.20.2018", 2018, 11)]
-        [InlineData("9.23.2018", 2018, 9)]
-        [InlineData("09.23.2018", 2018, 9)]
-        [InlineData("10-20-2018", 2018, 10)]
-        [InlineData("08/29/2018", 2018, 8)]
-        [InlineData("12-27.2017 14:59:32", 2017, 12)]
-        public void Parse_WhenParsingInvalidCultureDateFormat_ThrowFormatException(string dateString, int expectedYear,
-            int expectedMonth)
+        [InlineData("11.20.2018")]
+        [InlineData("9.23.2018")]
+        [InlineData("09.23.2018")]
+        [InlineData("10-20-2018")]
+        [InlineData("08/29/2018")]
+        [InlineData("12-27.2017 14:59:32")]
+        public void Parse_WhenParsingInvalidCultureDateFormat_ThrowFormatException(string dateString)
         {
             // Arrange
             var expectedExceptionMessage = $"Cannot parse value '{dateString}' to a valid {nameof(DuodecimDate)}.";
