@@ -7,6 +7,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>TimeGap</PackageId>
     <Description>Library for everything related to time, timezones and time concepts not supporting by existing native functionality or external libraries.</Description>
+    <noWarn>1591</noWarn>
   </PropertyGroup>
 
   <ItemGroup>
