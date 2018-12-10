@@ -12,18 +12,18 @@ namespace TimeGap.Tests.Extensions
         private const DateTimeKind LocalDateTimeKind = DateTimeKind.Local;
 
         [Theory]
-        [InlineData("2017-01-01 23.02.05", "2017-01-02 00.02.05")]
-        [InlineData("2017-12-31 23.01.07", "2018-01-01 00.01.07")]
-        [InlineData("2015-06-30 23.11.02", "2015-07-01 01.11.02")]
-        [InlineData("2015-04-25 02.04.00", "2015-04-25 04.04.00")]
-        [InlineData("2017-03-25 00.15.06", "2017-03-25 01.15.06")]
-        [InlineData("2012-03-25 01.05.16", "2012-03-25 03.05.16")]
-        [InlineData("2012-03-25 02.11.22", "2012-03-25 04.11.22")]
-        [InlineData("2018-10-28 00.03.23", "2018-10-28 02.03.23")]
-        [InlineData("2018-10-28 01.22.23", "2018-10-28 02.22.23")]
-        [InlineData("2018-10-28 02.00.01", "2018-10-28 03.00.01")]
-        [InlineData("2018-10-28 03.00.00", "2018-10-28 04.00.00")]
-        [InlineData("2018-02-13 02.14.45", "2018-02-13 03.14.45")]
+        [InlineData("2017-01-01 23:02:05", "2017-01-02 00:02:05")]
+        [InlineData("2017-12-31 23:01:07", "2018-01-01 00:01:07")]
+        [InlineData("2015-06-30 23:11:02", "2015-07-01 01:11:02")]
+        [InlineData("2015-04-25 02:04:00", "2015-04-25 04:04:00")]
+        [InlineData("2017-03-25 00:15:06", "2017-03-25 01:15:06")]
+        [InlineData("2012-03-25 01:05:16", "2012-03-25 03:05:16")]
+        [InlineData("2012-03-25 02:11:22", "2012-03-25 04:11:22")]
+        [InlineData("2018-10-28 00:03:23", "2018-10-28 02:03:23")]
+        [InlineData("2018-10-28 01:22:23", "2018-10-28 02:22:23")]
+        [InlineData("2018-10-28 02:00:01", "2018-10-28 03:00:01")]
+        [InlineData("2018-10-28 03:00:00", "2018-10-28 04:00:00")]
+        [InlineData("2018-02-13 02:14:45", "2018-02-13 03:14:45")]
         public void ToNorwegianTime_ValidUtcDateTime_ReturnsExpectedNorwegianDateTime(string timeToConvert,
             string expectedTimeOutput)
         {
@@ -44,7 +44,7 @@ namespace TimeGap.Tests.Extensions
         public void ToNorwegianTime_InvalidDateTimeKind_ThrowsArgumentException(DateTimeKind kind)
         {
             // Arrange
-            var dateTimeToConvert = ParseDate("2017-01-01 23.02.05", kind);
+            var dateTimeToConvert = ParseDate("2017-01-01 23:02:05", kind);
 
             // Act
             var exception = Record.Exception(() => dateTimeToConvert.ToNorwegianTime());
@@ -59,18 +59,18 @@ namespace TimeGap.Tests.Extensions
         }
 
         [Theory]
-        [InlineData("2017-01-02 00.02.05", "2017-01-01 23.02.05")]
-        [InlineData("2018-01-01 00.01.07", "2017-12-31 23.01.07")]
-        [InlineData("2015-07-01 01.11.02", "2015-06-30 23.11.02")]
-        [InlineData("2015-04-25 04.04.00", "2015-04-25 02.04.00")]
-        [InlineData("2017-03-25 01.15.06", "2017-03-25 00.15.06")]
-        [InlineData("2012-03-25 03.05.16", "2012-03-25 01.05.16")]
-        [InlineData("2012-03-25 04.11.22", "2012-03-25 02.11.22")]
-        [InlineData("2018-10-28 02.03.23", "2018-10-28 00.03.23")]
-        [InlineData("2018-10-28 02.22.23", "2018-10-28 00.22.23")]
-        [InlineData("2018-10-28 03.00.01", "2018-10-28 02.00.01")]
-        [InlineData("2018-10-28 04.00.00", "2018-10-28 03.00.00")]
-        [InlineData("2018-02-13 03.14.45", "2018-02-13 02.14.45")]
+        [InlineData("2017-01-02 00:02:05", "2017-01-01 23:02:05")]
+        [InlineData("2018-01-01 00:01:07", "2017-12-31 23:01:07")]
+        [InlineData("2015-07-01 01:11:02", "2015-06-30 23:11:02")]
+        [InlineData("2015-04-25 04:04:00", "2015-04-25 02:04:00")]
+        [InlineData("2017-03-25 01:15:06", "2017-03-25 00:15:06")]
+        [InlineData("2012-03-25 03:05:16", "2012-03-25 01:05:16")]
+        [InlineData("2012-03-25 04:11:22", "2012-03-25 02:11:22")]
+        [InlineData("2018-10-28 02:03:23", "2018-10-28 00:03:23")]
+        [InlineData("2018-10-28 02:22:23", "2018-10-28 00:22:23")]
+        [InlineData("2018-10-28 03:00:01", "2018-10-28 02:00:01")]
+        [InlineData("2018-10-28 04:00:00", "2018-10-28 03:00:00")]
+        [InlineData("2018-02-13 03:14:45", "2018-02-13 02:14:45")]
         public void ConvertToUtc_ValidDateTimeAndTimeZoneInputIsNorwegian_ReturnsExpectedUtcDateTime(
             string timeToConvert,
             string expectedTimeOutput)
@@ -87,18 +87,18 @@ namespace TimeGap.Tests.Extensions
         }
 
         [Theory]
-        [InlineData("2017-01-02 00.02.05", "2017-01-01 23.02.05")]
-        [InlineData("2018-01-01 00.01.07", "2017-12-31 23.01.07")]
-        [InlineData("2015-07-01 00.11.02", "2015-06-30 23.11.02")]
-        [InlineData("2015-04-25 03.04.00", "2015-04-25 02.04.00")]
-        [InlineData("2017-03-25 01.15.06", "2017-03-25 00.15.06")]
-        [InlineData("2012-03-25 02.05.16", "2012-03-25 01.05.16")]
-        [InlineData("2012-03-25 03.11.22", "2012-03-25 02.11.22")]
-        [InlineData("2018-10-28 01.03.23", "2018-10-28 00.03.23")]
-        [InlineData("2018-10-28 01.22.23", "2018-10-28 00.22.23")]
-        [InlineData("2018-10-28 03.00.01", "2018-10-28 02.00.01")]
-        [InlineData("2018-10-28 04.00.00", "2018-10-28 03.00.00")]
-        [InlineData("2018-02-13 03.14.45", "2018-02-13 02.14.45")]
+        [InlineData("2017-01-02 00:02:05", "2017-01-01 23:02:05")]
+        [InlineData("2018-01-01 00:01:07", "2017-12-31 23:01:07")]
+        [InlineData("2015-07-01 00:11:02", "2015-06-30 23:11:02")]
+        [InlineData("2015-04-25 03:04:00", "2015-04-25 02:04:00")]
+        [InlineData("2017-03-25 01:15:06", "2017-03-25 00:15:06")]
+        [InlineData("2012-03-25 02:05:16", "2012-03-25 01:05:16")]
+        [InlineData("2012-03-25 03:11:22", "2012-03-25 02:11:22")]
+        [InlineData("2018-10-28 01:03:23", "2018-10-28 00:03:23")]
+        [InlineData("2018-10-28 01:22:23", "2018-10-28 00:22:23")]
+        [InlineData("2018-10-28 03:00:01", "2018-10-28 02:00:01")]
+        [InlineData("2018-10-28 04:00:00", "2018-10-28 03:00:00")]
+        [InlineData("2018-02-13 03:14:45", "2018-02-13 02:14:45")]
         public void ConvertToUtc_ValidDateTimeAndTimeZoneInputIsGmtPlusOne_ReturnsExpectedUtcDateTime(
             string timeToConvert,
             string expectedTimeOutput)
@@ -115,18 +115,18 @@ namespace TimeGap.Tests.Extensions
         }
 
         [Theory]
-        [InlineData("2017-01-01 23.02.05", "2017-01-02 00.02.05")]
-        [InlineData("2017-12-31 23.01.07", "2018-01-01 00.01.07")]
-        [InlineData("2015-06-30 23.11.02", "2015-07-01 00.11.02")]
-        [InlineData("2015-04-25 02.04.00", "2015-04-25 03.04.00")]
-        [InlineData("2017-03-25 00.15.06", "2017-03-25 01.15.06")]
-        [InlineData("2012-03-25 01.05.16", "2012-03-25 02.05.16")]
-        [InlineData("2012-03-25 02.11.22", "2012-03-25 03.11.22")]
-        [InlineData("2018-10-28 00.03.23", "2018-10-28 01.03.23")]
-        [InlineData("2018-10-28 01.22.23", "2018-10-28 02.22.23")]
-        [InlineData("2018-10-28 02.00.01", "2018-10-28 03.00.01")]
-        [InlineData("2018-10-28 03.00.00", "2018-10-28 04.00.00")]
-        [InlineData("2018-02-13 02.14.45", "2018-02-13 03.14.45")]
+        [InlineData("2017-01-01 23:02:05", "2017-01-02 00:02:05")]
+        [InlineData("2017-12-31 23:01:07", "2018-01-01 00:01:07")]
+        [InlineData("2015-06-30 23:11:02", "2015-07-01 00:11:02")]
+        [InlineData("2015-04-25 02:04:00", "2015-04-25 03:04:00")]
+        [InlineData("2017-03-25 00:15:06", "2017-03-25 01:15:06")]
+        [InlineData("2012-03-25 01:05:16", "2012-03-25 02:05:16")]
+        [InlineData("2012-03-25 02:11:22", "2012-03-25 03:11:22")]
+        [InlineData("2018-10-28 00:03:23", "2018-10-28 01:03:23")]
+        [InlineData("2018-10-28 01:22:23", "2018-10-28 02:22:23")]
+        [InlineData("2018-10-28 02:00:01", "2018-10-28 03:00:01")]
+        [InlineData("2018-10-28 03:00:00", "2018-10-28 04:00:00")]
+        [InlineData("2018-02-13 02:14:45", "2018-02-13 03:14:45")]
         public void ToTimeZone_ValidUtcDateTimeWithTimeZoneOutputGmtPlusOne_ReturnsExpectedNorwegianDateTime(
             string timeToConvert,
             string expectedTimeOutput)
@@ -148,7 +148,7 @@ namespace TimeGap.Tests.Extensions
         public void ToTimeZone_InvalidDateTimeKind_ThrowsArgumentException(DateTimeKind kind)
         {
             // Arrange
-            var dateTimeToConvert = ParseDate("2017-01-01 23.02.05", kind);
+            var dateTimeToConvert = ParseDate("2017-01-01 23:02:05", kind);
 
             // Act
             var exception = Record.Exception(() => dateTimeToConvert.ToTimeZone(DateTimeExtensions.NorwayTimeZone));
@@ -163,8 +163,8 @@ namespace TimeGap.Tests.Extensions
         }
 
         [Theory]
-        [InlineData("2017-01-01 23.02.05")]
-        [InlineData("2017-12-31 23.01.07")]
+        [InlineData("2017-01-01 23:02:05")]
+        [InlineData("2017-12-31 23:01:07")]
         public void SetUtcKind_ValidDateTimesWithUtcKind_ReturnsExpectedDate(string timeToConvert)
         {
             // Arrange
@@ -179,8 +179,8 @@ namespace TimeGap.Tests.Extensions
         }
 
         [Theory]
-        [InlineData("2017-04-03 11.02.05")]
-        [InlineData("2017-11-11 07.02.05")]
+        [InlineData("2017-04-03 11:02:05")]
+        [InlineData("2017-11-11 07:02:05")]
         public void SetUtcKind_ValidDateTimesWithLocalKind_ReturnsExpectedDate(string timeToConvert)
         {
             // Arrange
@@ -196,8 +196,8 @@ namespace TimeGap.Tests.Extensions
         }
 
         [Theory]
-        [InlineData("2015-02-01 01.02.05")]
-        [InlineData("2017-01-07 05.11.24")]
+        [InlineData("2015-02-01 01:02:05")]
+        [InlineData("2017-01-07 05:11:24")]
         public void SetUtcKind_ValidDateTimesWithUnspecifiedKind_ReturnsExpectedDate(string timeToConvert)
         {
             // Arrange
@@ -231,7 +231,7 @@ namespace TimeGap.Tests.Extensions
 
         private static DateTime ParseDate(string dateString, DateTimeKind kind = UtcDateTimeKind)
         {
-            return DateTime.SpecifyKind(DateTime.Parse(dateString, new CultureInfo("nb-NO")), kind);
+            return DateTime.SpecifyKind(DateTime.Parse(dateString, CultureInfo.GetCultureInfo("en-US")), kind);
         }
     }
 }

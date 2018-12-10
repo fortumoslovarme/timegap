@@ -15,6 +15,8 @@ namespace TimeGap.Tests
 
         private static readonly string ExpectedYearOrMonthIsNegativeExceptionMessage =
             $"The value specified cannot be a negative number.{Environment.NewLine}Parameter name: {{0}}";
+        private static readonly CultureInfo NorwegianCulture = CultureInfo.GetCultureInfo("nb-NO");
+        private static readonly CultureInfo UnitedStatesCulture = CultureInfo.GetCultureInfo("en-US");
 
         [Fact]
         public void DuodecimDate_WhenConstructedWithArguments_PropertiesSet()
@@ -1099,9 +1101,10 @@ namespace TimeGap.Tests
         {
             // Arrange
             var expectedDuodecimDate = new DuodecimDate(expectedYear, expectedMonth);
+            var cultureInfo = NorwegianCulture;
 
             // Act
-            var parsedDuodecimDate = DuodecimDate.Parse(dateString, new CultureInfo("nb-NO"));
+            var parsedDuodecimDate = DuodecimDate.Parse(dateString, cultureInfo);
 
             // Assert
             Assert.Equal(expectedDuodecimDate, parsedDuodecimDate);
@@ -1118,9 +1121,10 @@ namespace TimeGap.Tests
         {
             // Arrange
             var expectedExceptionMessage = $"Cannot parse value '{dateString}' to a valid {nameof(DuodecimDate)}.";
+            var cultureInfo = NorwegianCulture;
 
             // Act
-            var exception = Record.Exception(() => DuodecimDate.Parse(dateString, new CultureInfo("nb-NO")));
+            var exception = Record.Exception(() => DuodecimDate.Parse(dateString, cultureInfo));
 
             // Assert
             exception.Verify<FormatException>(expectedExceptionMessage);
@@ -1144,9 +1148,10 @@ namespace TimeGap.Tests
         {
             // Arrange
             var expectedDuodecimDate = new DuodecimDate(expectedYear, expectedMonth);
+            var cultureInfo = UnitedStatesCulture;
 
             // Act
-            var parsedDuodecimDate = DuodecimDate.Parse(dateString, new CultureInfo("en-US"));
+            var parsedDuodecimDate = DuodecimDate.Parse(dateString, cultureInfo);
 
             // Assert
             Assert.Equal(expectedDuodecimDate, parsedDuodecimDate);
@@ -1162,9 +1167,10 @@ namespace TimeGap.Tests
         {
             // Arrange
             var expectedDuodecimDate = new DuodecimDate(expectedYear, expectedMonth);
+            var cultureInfo = NorwegianCulture;
 
             // Act
-            var parsedDuodecimDate = DuodecimDate.Parse(dateString, new CultureInfo("nb-NO"));
+            var parsedDuodecimDate = DuodecimDate.Parse(dateString, cultureInfo);
 
             // Assert
             Assert.Equal(expectedDuodecimDate, parsedDuodecimDate);
@@ -1180,9 +1186,10 @@ namespace TimeGap.Tests
         {
             // Arrange
             var expectedDuodecimDate = new DuodecimDate(expectedYear, expectedMonth);
+            var cultureInfo = UnitedStatesCulture;
 
             // Act
-            var parsedDuodecimDate = DuodecimDate.Parse(dateString, new CultureInfo("en-US"));
+            var parsedDuodecimDate = DuodecimDate.Parse(dateString, cultureInfo);
 
             // Assert
             Assert.Equal(expectedDuodecimDate, parsedDuodecimDate);
@@ -1199,9 +1206,11 @@ namespace TimeGap.Tests
         {
             // Arrange
             var expectedDuodecimDate = new DuodecimDate(expectedYear, expectedMonth);
+            var cultureInfo = NorwegianCulture;
+            const DateTimeStyles dateTimeStyles = DateTimeStyles.None;
 
             // Act
-            var parsedDuodecimDate = DuodecimDate.Parse(dateString, new CultureInfo("nb-NO"), DateTimeStyles.None);
+            var parsedDuodecimDate = DuodecimDate.Parse(dateString, cultureInfo, dateTimeStyles);
 
             // Assert
             Assert.Equal(expectedDuodecimDate, parsedDuodecimDate);
@@ -1220,10 +1229,12 @@ namespace TimeGap.Tests
             var dateTimeAsString = dateTime.ToString("MM/dd/yyyy", CultureInfo.CurrentCulture);
             var utcDateTime = dateTime.ToUniversalTime();
             var expectedDuodecimDate = new DuodecimDate(utcDateTime.Year, utcDateTime.Month);
+            var cultureInfo = UnitedStatesCulture;
+            const DateTimeStyles dateTimeStyles = DateTimeStyles.AssumeLocal;
 
             // Act
             var parsedDuodecimDate =
-                DuodecimDate.Parse(dateTimeAsString, new CultureInfo("en-US"), DateTimeStyles.AssumeLocal);
+                DuodecimDate.Parse(dateTimeAsString, cultureInfo, dateTimeStyles);
 
             // Assert
             Assert.Equal(expectedDuodecimDate, parsedDuodecimDate);

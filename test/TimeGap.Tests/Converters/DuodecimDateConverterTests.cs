@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Reflection;
 using TimeGap.Converters;
 using TimeGap.Tests.TestUtilities;
 using Xunit;
@@ -9,6 +8,8 @@ namespace TimeGap.Tests.Converters
 {
     public class DuodecimDateConverterTests
     {
+        private static readonly CultureInfo NorwegianCulture = CultureInfo.GetCultureInfo("nb-NO");
+
         [Fact]
         public void CanConvertFrom_WhenSourceString_ReturnTrue()
         {
@@ -81,7 +82,7 @@ namespace TimeGap.Tests.Converters
             var converter = new DuodecimDateConverter();
 
             // Act
-            var convertedValue = converter.ConvertFrom(null, new CultureInfo("nb-NO"), convertValue);
+            var convertedValue = converter.ConvertFrom(null, NorwegianCulture, convertValue);
 
             // Assert
             Assert.Equal(expectedCovertedValue, convertedValue);

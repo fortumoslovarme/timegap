@@ -295,7 +295,8 @@ namespace TimeGap
         /// <returns>Parsed DuodecimDate.</returns>
         public static DuodecimDate Parse(string input, IFormatProvider provider, DateTimeStyles styles)
         {
-            var canParseToDateTimeOffset = DateTimeOffset.TryParse(input, provider, styles, out var parsedDateTimeOffset);
+            var canParseToDateTimeOffset =
+                DateTimeOffset.TryParse(input, provider, styles, out var parsedDateTimeOffset);
 
             if (canParseToDateTimeOffset)
             {
