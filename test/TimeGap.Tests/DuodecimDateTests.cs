@@ -13,7 +13,7 @@ namespace TimeGap.Tests
         private const string ExpectedInvalidDuodecimDateExceptionMessage =
             "The combination of Year '{0}' and Month '{1}' does not represent a valid DuodecimDate.";
 
-        private string ExpectedYearOrMonthIsNegativeExceptionMessage =
+        private static readonly string ExpectedYearOrMonthIsNegativeExceptionMessage =
             $"The value specified cannot be a negative number.{Environment.NewLine}Parameter name: {{0}}";
 
         [Fact]
